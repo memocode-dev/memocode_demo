@@ -16,9 +16,12 @@ import static lombok.AccessLevel.PROTECTED;
 @Entity
 @SuperBuilder
 @NoArgsConstructor(access = PROTECTED)
-@Table(name = "memo_versions")
+@Table(name = "posts")
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = true)
 public class Post extends AggregateRoot {
+
+    @Column(name = "title")
+    private String title;
 
     @Column(name = "content")
     private String content;

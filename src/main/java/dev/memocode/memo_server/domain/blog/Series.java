@@ -3,7 +3,6 @@ package dev.memocode.memo_server.domain.blog;
 import dev.memocode.memo_server.domain.base.entity.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

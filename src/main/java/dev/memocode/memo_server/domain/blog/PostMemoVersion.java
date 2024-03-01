@@ -15,7 +15,7 @@ import static lombok.AccessLevel.PROTECTED;
 @Entity
 @SuperBuilder
 @NoArgsConstructor(access = PROTECTED)
-@Table(name = "memo_versions")
+@Table(name = "post_memoversion")
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
 public class PostMemoVersion extends BaseEntity {
 

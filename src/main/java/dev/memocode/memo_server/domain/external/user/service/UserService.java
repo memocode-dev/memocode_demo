@@ -2,6 +2,7 @@ package dev.memocode.memo_server.domain.external.user.service;
 
 import dev.memocode.memo_server.domain.external.user.entity.Author;
 import dev.memocode.memo_server.domain.external.user.repository.UserRepository;
+import dev.memocode.memo_server.exception.GlobalException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,6 @@ public class UserService {
 
     public Author findByIdElseThrow(UUID userId) {
         return userRepository.findById(userId)
-                .orElseThrow(() -> new GlobalException(USER_NOT_FOUND));
+                .orElseThrow(() -> new GlobalException(null));
     }
 }
