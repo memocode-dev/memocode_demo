@@ -8,7 +8,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
-import java.util.UUID;
+import java.util.HashSet;
+import java.util.Set;
 
 import static jakarta.persistence.FetchType.LAZY;
 import static lombok.AccessLevel.PROTECTED;
@@ -34,4 +35,20 @@ public class Memo extends AggregateRoot {
     @OneToOne(fetch = LAZY)
     @JoinColumn(name = "selected_memo_version_id")
     private MemoVersion selectedMemoVersion;
+
+    @ManyToOne(fetch = LAZY)
+    @JoinColumn(name = "series_id")
+    private Series series;
+
+    @Column(name = "affinity")
+    private Long affinity; // 좋아요
+
+    private Integer order;
+
+    @ManyToOne(fetch = LAZY)
+    @JoinColumn(name = "parent_memo_id")
+    private Memo parentMemo;
+
+    @OneToMany(mappedBy = "parentMemo")
+    private Set<Memo> childMemos = new HashSet<>();
 }
