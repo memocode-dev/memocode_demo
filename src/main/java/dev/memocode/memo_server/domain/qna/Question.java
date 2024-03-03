@@ -1,4 +1,4 @@
-package dev.memocode.memo_server.domain.memo;
+package dev.memocode.memo_server.domain.qna;
 
 import dev.memocode.memo_server.domain.base.entity.AggregateRoot;
 import dev.memocode.memo_server.domain.external.user.entity.Author;
@@ -8,9 +8,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static jakarta.persistence.FetchType.LAZY;
 import static lombok.AccessLevel.PROTECTED;
 
@@ -18,20 +15,16 @@ import static lombok.AccessLevel.PROTECTED;
 @Entity
 @SuperBuilder
 @NoArgsConstructor(access = PROTECTED)
-@Table(name = "memo_comments")
+@Table(name = "articles")
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = true)
-public class MemoComment extends AggregateRoot {
+public class Question extends AggregateRoot {
+
+    @Column(name = "title")
+    private String title;
 
     @Column(name = "content")
     private String content;
 
     @ManyToOne(fetch = LAZY)
     private Author author;
-
-    @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "parent_post_comment_id")
-    private MemoComment parentMemoComment;
-
-    @OneToMany(mappedBy = "parentMemoComment")
-    private List<MemoComment> childMemoComments = new ArrayList<>();
 }
